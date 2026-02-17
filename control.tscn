@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://d3t77o8j3gq8g"]
+
+[ext_resource type="Script" uid="uid://doecswkm1k1ia" path="res://scripts/resourceList.gd" id="1_0fbet"]
+
+[sub_resource type="Theme" id="Theme_62e2m"]
+
+[node name="Control" type="Control" unique_id=1109125399]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_62e2m")
+
+[node name="resource_list" type="ItemList" parent="." unique_id=1014635917]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+auto_width = true
+script = ExtResource("1_0fbet")
+
+[node name="lore_panel" type="PanelContainer" parent="." unique_id=596222985]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -549.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="lore_panel" unique_id=1112418776]
+layout_mode = 2
+size_flags_vertical = 0
+text = "You alive. Hand have shiny. Hand give neck shiny. Hungry. Where food?"
+
+[node name="center_panel" type="PanelContainer" parent="." unique_id=83077625]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -0.5
+offset_right = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="center_panel" unique_id=1710978268]
+layout_mode = 2
+text = "stuff goes here."
