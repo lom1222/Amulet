@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Inventory="*uid://cr4uho35wnfpd"
+LogManager="*uid://nk3t2err868s"
 
 [physics]
 
