@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d3t77o8j3gq8g"]
 
 [ext_resource type="Script" uid="uid://doecswkm1k1ia" path="res://scripts/attached/resourceList.gd" id="1_5p55f"]
-[ext_resource type="Script" uid="uid://dledolcqmwc8f" path="res://scenes/log.gd" id="2_r67kn"]
+[ext_resource type="Script" uid="uid://dledolcqmwc8f" path="res://scripts/attached/log.gd" id="2_r67kn"]
 
 [sub_resource type="Theme" id="Theme_62e2m"]
 
@@ -23,6 +23,7 @@ auto_width = true
 script = ExtResource("1_5p55f")
 
 [node name="log" type="RichTextLabel" parent="." unique_id=835916405]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
@@ -33,6 +34,7 @@ grow_horizontal = 0
 grow_vertical = 2
 bbcode_enabled = true
 text = "lorem ipsum"
+fit_content = true
 scroll_following = true
 scroll_following_visible_characters = true
 script = ExtResource("2_r67kn")
