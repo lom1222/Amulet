@@ -4,7 +4,7 @@ extends Node
 var resources = {}
 
 var resource_list = [
-	"food"
+	"Food"
 ]
 
 func _ready() -> void:

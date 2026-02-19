@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://doecswkm1k1ia" path="res://scripts/attached/resourceList.gd" id="1_5p55f"]
 [ext_resource type="Script" uid="uid://dledolcqmwc8f" path="res://scripts/attached/log.gd" id="2_r67kn"]
+[ext_resource type="Theme" uid="uid://dpsnalb5vaule" path="res://themes/basic_theme.tres" id="3_brbbq"]
 
 [sub_resource type="Theme" id="Theme_62e2m"]
 
@@ -14,42 +15,103 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_62e2m")
 
-[node name="resource_list" type="ItemList" parent="." unique_id=1014635917]
+[node name="horizontal_layout_box" type="HBoxContainer" parent="." unique_id=644992921]
 layout_mode = 1
-anchors_preset = 9
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 4
+
+[node name="inventory_margin_box" type="MarginContainer" parent="horizontal_layout_box" unique_id=1432012077]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="resource_list" type="ItemList" parent="horizontal_layout_box/inventory_margin_box" unique_id=1014635917]
+layout_mode = 2
+size_flags_horizontal = 3
 auto_width = true
 script = ExtResource("1_5p55f")
 
-[node name="log" type="RichTextLabel" parent="." unique_id=835916405]
+[node name="centre_margin_box" type="MarginContainer" parent="horizontal_layout_box" unique_id=778449136]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="temp_centre" type="Container" parent="horizontal_layout_box/centre_margin_box" unique_id=1005778222]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="log_margin_box" type="MarginContainer" parent="horizontal_layout_box" unique_id=2117555271]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Log" type="TabContainer" parent="horizontal_layout_box/log_margin_box" unique_id=1085754239 node_paths=PackedStringArray("lore_log", "event_log", "error_log")]
+layout_mode = 2
+size_flags_horizontal = 3
+tab_alignment = 1
+current_tab = 0
+clip_tabs = false
+tab_0/title = "Lore"
+tab_1/title = "Events"
+tab_2/title = "Errors"
+script = ExtResource("2_r67kn")
+lore_log = NodePath("lore_log_margin/lore_log")
+event_log = NodePath("event_log_margin/event_log")
+error_log = NodePath("error_log_margin/error_log")
+
+[node name="lore_log_margin" type="MarginContainer" parent="horizontal_layout_box/log_margin_box/Log" unique_id=1934536456]
+layout_mode = 2
+theme = ExtResource("3_brbbq")
+theme_type_variation = &"LogMarginContainer"
+metadata/_tab_index = 0
+metadata/_tab_name = "Lore"
+
+[node name="lore_log" type="RichTextLabel" parent="horizontal_layout_box/log_margin_box/Log/lore_log_margin" unique_id=835916405]
 custom_minimum_size = Vector2(200, 0)
-layout_mode = 1
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -1.0
-grow_horizontal = 0
-grow_vertical = 2
+layout_mode = 2
+theme_type_variation = &"RichTextLabel_lore"
 bbcode_enabled = true
 text = "lorem ipsum"
 fit_content = true
+scroll_active = false
 scroll_following = true
 scroll_following_visible_characters = true
-script = ExtResource("2_r67kn")
 
-[node name="center_panel" type="PanelContainer" parent="." unique_id=83077625]
-layout_mode = 1
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -0.5
-offset_right = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="center_panel" unique_id=1710978268]
+[node name="event_log_margin" type="MarginContainer" parent="horizontal_layout_box/log_margin_box/Log" unique_id=498454952]
+visible = false
 layout_mode = 2
-text = "stuff goes here."
+theme_type_variation = &"LogMarginContainer"
+metadata/_tab_index = 1
+metadata/_tab_name = "Events"
+
+[node name="event_log" type="RichTextLabel" parent="horizontal_layout_box/log_margin_box/Log/event_log_margin" unique_id=1559678100]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_type_variation = &"RichTextLabel_event"
+bbcode_enabled = true
+text = "lorem ipsum"
+fit_content = true
+scroll_active = false
+scroll_following = true
+scroll_following_visible_characters = true
+
+[node name="error_log_margin" type="MarginContainer" parent="horizontal_layout_box/log_margin_box/Log" unique_id=1788374926]
+visible = false
+layout_mode = 2
+theme_type_variation = &"LogMarginContainer"
+metadata/_tab_index = 2
+metadata/_tab_name = "Errors"
+
+[node name="error_log" type="RichTextLabel" parent="horizontal_layout_box/log_margin_box/Log/error_log_margin" unique_id=1597693289]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_type_variation = &"RichTextLabel_error"
+bbcode_enabled = true
+text = "lorem ipsum"
+fit_content = true
+scroll_active = false
+scroll_following = true
+scroll_following_visible_characters = true

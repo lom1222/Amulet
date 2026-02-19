@@ -19,6 +19,10 @@ config/icon="res://icons/icon.svg"
 Inventory="*uid://cr4uho35wnfpd"
 LogManager="*uid://nk3t2err868s"
 
+[gui]
+
+theme/custom="uid://dpsnalb5vaule"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
