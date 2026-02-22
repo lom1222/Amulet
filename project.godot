@@ -16,8 +16,11 @@ config/icon="res://icons/icon.svg"
 
 [autoload]
 
-Inventory="*uid://cr4uho35wnfpd"
+ConfigManager="*uid://cbkvi46w1r3pm"
+SaveManager="*uid://bnlwdj8jirc7f"
 LogManager="*uid://nk3t2err868s"
+PlayerData="*uid://bs608rk8hdwp0"
+Inventory="*uid://cr4uho35wnfpd"
 
 [gui]
 

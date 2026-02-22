@@ -1,14 +1,5 @@
 [gd_resource type="Theme" format=3 uid="uid://dpsnalb5vaule"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5w1e8"]
-bg_color = Color(0.8503053, 0.473404, 0.49686795, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i3a8d"]
-bg_color = Color(0.53915286, 0.6419008, 0.4137564, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u4n8c"]
-bg_color = Color(0.3617143, 0.6205673, 0.86997265, 1)
-
 [sub_resource type="FontFile" id="FontFile_5w1e8"]
 cache/0/variation_coordinates = {}
 cache/0/face_index = 0
@@ -78,11 +69,5 @@ MarginContainer_log/constants/margin_left = 5
 MarginContainer_log/constants/margin_right = 5
 MarginContainer_log/constants/margin_top = 5
 RichTextLabel/constants/line_separation = 5
-RichTextLabel_error/base_type = &"RichTextLabel"
-RichTextLabel_error/styles/background = SubResource("StyleBoxFlat_5w1e8")
-RichTextLabel_event/base_type = &"RichTextLabel"
-RichTextLabel_event/styles/background = SubResource("StyleBoxFlat_i3a8d")
-RichTextLabel_lore/base_type = &"RichTextLabel"
-RichTextLabel_lore/styles/background = SubResource("StyleBoxFlat_u4n8c")
 TabContainer/constants/tab_separation = 5
 TabContainer/font_sizes/font_size = 16

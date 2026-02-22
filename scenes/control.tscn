@@ -28,7 +28,19 @@ theme_override_constants/separation = 4
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="resource_list" type="ItemList" parent="horizontal_layout_box/inventory_margin_box" unique_id=1014635917]
+[node name="inventory_tabs" type="TabContainer" parent="horizontal_layout_box/inventory_margin_box" unique_id=1508076904]
+layout_mode = 2
+tab_alignment = 1
+current_tab = 0
+drag_to_rearrange_enabled = true
+tab_0/title = "Resources"
+
+[node name="resource_list_margin" type="MarginContainer" parent="horizontal_layout_box/inventory_margin_box/inventory_tabs" unique_id=170439450]
+layout_mode = 2
+metadata/_tab_index = 0
+metadata/_tab_name = "Resources"
+
+[node name="resource_list" type="ItemList" parent="horizontal_layout_box/inventory_margin_box/inventory_tabs/resource_list_margin" unique_id=1014635917]
 layout_mode = 2
 size_flags_horizontal = 3
 auto_width = true
@@ -39,28 +51,38 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
 
-[node name="temp_centre" type="Container" parent="horizontal_layout_box/centre_margin_box" unique_id=1005778222]
+[node name="centre_game_tabs" type="TabContainer" parent="horizontal_layout_box/centre_margin_box" unique_id=167522732]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.0
+current_tab = 0
+drag_to_rearrange_enabled = true
+tab_0/title = "Actions"
+
+[node name="actions_margin" type="MarginContainer" parent="horizontal_layout_box/centre_margin_box/centre_game_tabs" unique_id=1854006724]
+layout_mode = 2
+metadata/_tab_index = 0
+metadata/_tab_name = "Actions"
+
+[node name="actions" type="HFlowContainer" parent="horizontal_layout_box/centre_margin_box/centre_game_tabs/actions_margin" unique_id=1552777431]
+layout_mode = 2
 
 [node name="log_margin_box" type="MarginContainer" parent="horizontal_layout_box" unique_id=2117555271]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Log" type="TabContainer" parent="horizontal_layout_box/log_margin_box" unique_id=1085754239 node_paths=PackedStringArray("lore_log", "event_log", "error_log")]
+[node name="Log" type="TabContainer" parent="horizontal_layout_box/log_margin_box" unique_id=1085754239 node_paths=PackedStringArray("lore_log", "event_log", "sys_log")]
 layout_mode = 2
 size_flags_horizontal = 3
 tab_alignment = 1
 current_tab = 0
 clip_tabs = false
+drag_to_rearrange_enabled = true
 tab_0/title = "Lore"
 tab_1/title = "Events"
-tab_2/title = "Errors"
+tab_2/title = "System"
 script = ExtResource("2_r67kn")
 lore_log = NodePath("lore_log_margin/lore_log")
 event_log = NodePath("event_log_margin/event_log")
-error_log = NodePath("error_log_margin/error_log")
+sys_log = NodePath("sys_log_margin/sys_log")
 
 [node name="lore_log_margin" type="MarginContainer" parent="horizontal_layout_box/log_margin_box/Log" unique_id=1934536456]
 layout_mode = 2
@@ -75,8 +97,6 @@ layout_mode = 2
 theme_type_variation = &"RichTextLabel_lore"
 bbcode_enabled = true
 text = "lorem ipsum"
-fit_content = true
-scroll_active = false
 scroll_following = true
 scroll_following_visible_characters = true
 
@@ -93,25 +113,21 @@ layout_mode = 2
 theme_type_variation = &"RichTextLabel_event"
 bbcode_enabled = true
 text = "lorem ipsum"
-fit_content = true
-scroll_active = false
 scroll_following = true
 scroll_following_visible_characters = true
 
-[node name="error_log_margin" type="MarginContainer" parent="horizontal_layout_box/log_margin_box/Log" unique_id=1788374926]
+[node name="sys_log_margin" type="MarginContainer" parent="horizontal_layout_box/log_margin_box/Log" unique_id=1788374926]
 visible = false
 layout_mode = 2
 theme_type_variation = &"LogMarginContainer"
 metadata/_tab_index = 2
-metadata/_tab_name = "Errors"
+metadata/_tab_name = "System"
 
-[node name="error_log" type="RichTextLabel" parent="horizontal_layout_box/log_margin_box/Log/error_log_margin" unique_id=1597693289]
+[node name="sys_log" type="RichTextLabel" parent="horizontal_layout_box/log_margin_box/Log/sys_log_margin" unique_id=1597693289]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_type_variation = &"RichTextLabel_error"
 bbcode_enabled = true
 text = "lorem ipsum"
-fit_content = true
-scroll_active = false
 scroll_following = true
 scroll_following_visible_characters = true
