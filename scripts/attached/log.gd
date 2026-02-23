@@ -11,9 +11,13 @@ func _ready() -> void:
 	
 	LogManager.log_updated.connect(_on_log_updated)
 	
-	LogManager.add_log("You awake.", "lore")
-	LogManager.add_log("The first thing you see are your hands, and in them, a shinning amulet.", "lore")
-	LogManager.add_log("You put it on, and tear your focus away. You are hungry. You dont know where you are.", "lore")
+	#LogManager.add_log("You awake.", "lore")
+	#LogManager.add_log("The first thing you see are your hands, and in them, a shinning amulet.", "lore")
+	#LogManager.add_log("You put it on, and tear your focus away. You are hungry. You dont know where you are.", "lore")
+	
+	_on_log_updated("lore")
+	_on_log_updated("event")
+	_on_log_updated("sys")
 	
 func _on_log_updated(_log_type : String):
 	var cur_log: RichTextLabel

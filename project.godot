@@ -17,10 +17,12 @@ config/icon="res://icons/icon.svg"
 [autoload]
 
 ConfigManager="*uid://cbkvi46w1r3pm"
-SaveManager="*uid://bnlwdj8jirc7f"
 LogManager="*uid://nk3t2err868s"
 PlayerData="*uid://bs608rk8hdwp0"
 Inventory="*uid://cr4uho35wnfpd"
+ActionManager="*uid://ciyo5ll1i1245"
+DataValidator="*uid://ckgnpicxe23wm"
+SaveManager="*uid://bnlwdj8jirc7f"
 
 [gui]
 

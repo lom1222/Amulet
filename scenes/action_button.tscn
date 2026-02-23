@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://d2h5sljilrpnb"]
+
+[ext_resource type="Script" uid="uid://do118sdxuoko4" path="res://scripts/attached/action_button.gd" id="1_js6u8"]
+
+[node name="Action_Button" type="Button" unique_id=1846938305]
+custom_minimum_size = Vector2(150, 50)
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("1_js6u8")

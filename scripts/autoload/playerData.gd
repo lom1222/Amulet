@@ -1,6 +1,13 @@
 extends Node
 
-var game_time = 0
+var data: Dictionary[String, float] = {
+	"game_time" = 0,
+	"max_simultaneous_actions" = 1,
+	"population" = 1
+}
 
 func _process(delta: float) -> void:
-	game_time += delta
+	data["game_time"] += delta
+
+func initialize_player_data():
+	return true

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="GameAction" format=3 uid="uid://0u24gkswatyt"]
+
+[ext_resource type="Script" uid="uid://c5xx4ibshfqox" path="res://scripts/data_structures/action.gd" id="1_daioi"]
+
+[resource]
+script = ExtResource("1_daioi")
+name = "Survive"
+resource_modifiers = {
+"food_base": 1.0
+}
+metadata/_custom_type_script = "uid://c5xx4ibshfqox"

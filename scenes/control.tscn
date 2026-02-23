@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://d3t77o8j3gq8g"]
 
 [ext_resource type="Script" uid="uid://doecswkm1k1ia" path="res://scripts/attached/resourceList.gd" id="1_5p55f"]
+[ext_resource type="Script" uid="uid://q1w1lq0mtr5i" path="res://scripts/attached/actionsListUI.gd" id="2_8n18e"]
 [ext_resource type="Script" uid="uid://dledolcqmwc8f" path="res://scripts/attached/log.gd" id="2_r67kn"]
 [ext_resource type="Theme" uid="uid://dpsnalb5vaule" path="res://themes/basic_theme.tres" id="3_brbbq"]
+[ext_resource type="PackedScene" uid="uid://d2h5sljilrpnb" path="res://scenes/action_button.tscn" id="3_tjwpk"]
 
 [sub_resource type="Theme" id="Theme_62e2m"]
 
@@ -64,6 +66,8 @@ metadata/_tab_name = "Actions"
 
 [node name="actions" type="HFlowContainer" parent="horizontal_layout_box/centre_margin_box/centre_game_tabs/actions_margin" unique_id=1552777431]
 layout_mode = 2
+script = ExtResource("2_8n18e")
+action_button_scene = ExtResource("3_tjwpk")
 
 [node name="log_margin_box" type="MarginContainer" parent="horizontal_layout_box" unique_id=2117555271]
 layout_mode = 2
