@@ -7,4 +7,4 @@ class_name GameAction
 var unlocked = false
 var depreciated = false
 
-@export var resource_modifiers: Dictionary[String, float]
+@export var resource_modifiers: Array[ModifierEntry]
