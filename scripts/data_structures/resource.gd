@@ -32,8 +32,9 @@ func update(delta):
 			resource_delta = resource_pool
 		amount += resource_delta
 		
-func checkRate():
+func update_rate():
 	#check all buildings, upgrades, and actions for rate modifications
+	_update_rate_variables()
 	rate = _get_new_rate()
 	tooltip = _generate_tooltip()
 	
@@ -56,6 +57,40 @@ func _get_increased_multiplier() -> float:
 	
 func _generate_tooltip():
 	return
+
+func _update_rate_variables():
+	var all_modifiers: Array[ModifierEntry] = []
+	
+	all_modifiers.append_array(_get_action_modifiers(name))
+	all_modifiers.append_array(_get_building_modifiers(name))
+	all_modifiers.append_array(_get_upgrade_modifiers(name))
+	all_modifiers.append_array(_get_research_modifiers(name))
+	
+	var new_base_rate_modifiers: Dictionary[String, float] = {"Base": 0}
+	var new_increased_multiplier_modifiers: Dictionary[String, float] = {"Base": 1}
+	var new_multipliers: Dictionary[String, float] = {"Base": 1}
+	
+	for modifier: ModifierEntry in all_modifiers:
+		if modifier.resource != self.name:
+			continue
+		if modifier.base_increased != 0:
+			new_base_rate_modifiers[modifier.source] = modifier.base_increased
+		if modifier.percent_increased != 0:
+			new_increased_multiplier_modifiers[modifier.source] = modifier.percent_increased
+		if modifier.multiplier != 1:
+			new_multipliers[modifier.source] = modifier.multiplier
+	
+func _get_upgrade_modifiers(resource: String) -> Array[ModifierEntry]:
+	return []
+	
+func _get_building_modifiers(resource: String) -> Array[ModifierEntry]:
+	return []
+	
+func _get_action_modifiers(resource: String) -> Array[ModifierEntry]:
+	return []
+	
+func _get_research_modifiers(resource: String) -> Array[ModifierEntry]:
+	return []
 	
 func get_save_data() -> Dictionary:
 	return {

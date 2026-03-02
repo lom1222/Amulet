@@ -1,3 +1,4 @@
+@tool
 extends Resource
 class_name GameAction
 
@@ -7,4 +8,9 @@ class_name GameAction
 var unlocked = false
 var depreciated = false
 
-@export var resource_modifiers: Array[ModifierEntry]
+@export var resource_modifiers: Array[ModifierEntry] = []:
+	set(value):
+		resource_modifiers = value
+		print(resource_modifiers[resource_modifiers.size()-1])
+		if resource_modifiers[resource_modifiers.size()-1] == null:
+			resource_modifiers[resource_modifiers.size()-1] = ModifierEntry.new()
