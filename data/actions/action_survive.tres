@@ -5,8 +5,7 @@
 
 [sub_resource type="Resource" id="Resource_js1xn"]
 script = ExtResource("1_js1xn")
-source = "Survive"
-resource = "grass"
+resource = "food"
 base_increased = 1.0
 
 [resource]

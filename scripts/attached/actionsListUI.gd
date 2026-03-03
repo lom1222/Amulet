@@ -18,8 +18,8 @@ func _generate_buttons():
 		while file_name != "":
 			if file_name.ends_with(".tres"):
 				var game_action = load(action_data_folder + file_name) as GameAction
-				var has_valid_mods = DataValidator.validate_game_modifiers(game_action.resource_modifiers.keys())
-				LogManager.add_log("[%s] validation: [%s]" % [file_name, has_valid_mods], "sys", "green" if has_valid_mods else "red")
+				var has_valid_names = DataValidator.validate_resource_names(game_action.resource_modifiers)
+				LogManager.add_log("[%s] validation: [%s]" % [file_name, has_valid_names], "sys", "green" if has_valid_names else "red")
 				_create_button(game_action)
 			file_name = dir.get_next()
 

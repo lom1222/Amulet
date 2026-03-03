@@ -11,6 +11,9 @@ var depreciated = false
 @export var resource_modifiers: Array[ModifierEntry] = []:
 	set(value):
 		resource_modifiers = value
-		print(resource_modifiers[resource_modifiers.size()-1])
 		if resource_modifiers[resource_modifiers.size()-1] == null:
 			resource_modifiers[resource_modifiers.size()-1] = ModifierEntry.new()
+
+func update_dependant_resource_rates():
+	for modifier:ModifierEntry in resource_modifiers:
+		Inventory.resources[modifier.resource].update_rate()

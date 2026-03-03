@@ -5,7 +5,7 @@ const CONFIG_FILE_PATH = "user//:config_0.cfg"
 var configs = {
 	"auto_save_frequency": 60.0,
 	"DISABLE_SAVING": false,
-	"DISABLE_LOADING": true,
+	"DISABLE_LOADING": false,
 	"PRINT_CONFIGS_ON_STARTUP": true
 }
 

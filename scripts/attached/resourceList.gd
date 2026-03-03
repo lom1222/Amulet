@@ -6,7 +6,8 @@ var time_since_update = 0.0
 var resource_indexes = {}
 
 func _ready() -> void:
-	Inventory.resource_unlocked.connect(_on_resource_unlocked)
+	GlobalSignals.resource_unlocked.connect(_on_resource_unlocked)
+	GlobalSignals.resource_tooltip_changed.connect(_on_resource_tooltip_changed)
 	_build_ui_list()
 	
 func _build_ui_list():
@@ -34,8 +35,26 @@ func _update_ui_values():
 		
 		set_item_text(index, new_text)
 
-func _update_tooltip_values():
+func _update_all_tooltip_values():
 	return
+	
+func _update_tooltip_value(resource: GameResource):
+	set_item_tooltip(resource_indexes[resource.name],resource.tooltip)
 
 func _on_resource_unlocked(_resource_name):
 	_build_ui_list()
+
+func _on_resource_tooltip_changed(resource: GameResource):
+	_update_tooltip_value(resource)
+	
+func _make_custom_tooltip(for_text: String) -> Control:
+	var tooltip_panel = PanelContainer.new()
+	var tooltip_label = RichTextLabel.new()
+
+	tooltip_label.bbcode_enabled = true
+	tooltip_label.text = for_text
+	tooltip_label.fit_content = true
+	tooltip_label.custom_minimum_size = Vector2(300, 0)
+
+	tooltip_panel.add_child(tooltip_label)
+	return tooltip_panel

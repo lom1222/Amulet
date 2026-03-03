@@ -2,14 +2,13 @@ extends Node
 
 var resources: Dictionary[String, GameResource] = {}
 
-var resource_list: Array[String] = [
+const RESOURCE_LIST: Array[String] = [
 	"food"
 ]
 
-signal resource_unlocked(resource_name)
 
 func _ready() -> void:
-	for resource_name in resource_list:
+	for resource_name in RESOURCE_LIST:
 		var new_resource = GameResource.new()
 		new_resource.name = resource_name
 		resources[resource_name] = new_resource
@@ -23,9 +22,11 @@ func _process(delta: float) -> void:
 func initialize_resource_data():
 	unlock_resource("food")
 	resources["food"].amount = 100
+	resources["food"].rate_enabled = true
+	resources["food"].resource_pool = 1000000000
 	return true
 	
 func unlock_resource(resource_name):
 	resources[resource_name].unlocked = true
-	resource_unlocked.emit(resource_name)
+	GlobalSignals.resource_unlocked.emit(resource_name)
 	return
