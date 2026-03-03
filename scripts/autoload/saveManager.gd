@@ -13,15 +13,16 @@ func _ready() -> void:
 	if not game_loaded:
 		_initialize_game_data()
 
-func save_game():
+func _save_game():
 	if ConfigManager.configs["DISABLE_SAVING"]:
 		return
 	var save_file = ConfigFile.new()
 	
-	for resource_name in Inventory.resources:
+	for resource_name:String in Inventory.resources.keys():
 		save_file.set_value("Resources", resource_name, Inventory.resources[resource_name].get_save_data())
 	
-	for data_value in PlayerData.data:
+	var playerSave: Dictionary[String, float] = PlayerData.getSave()
+	for data_value:String in playerSave:
 		save_file.set_value("Player", data_value, PlayerData.data[data_value])
 	
 	save_file.set_value("Meta", "save_time", Time.get_unix_time_from_system())
@@ -59,4 +60,4 @@ func _initialize_game_data():
 
 
 func _on_auto_save_timer_timeout():
-	save_game()
+	_save_game()
