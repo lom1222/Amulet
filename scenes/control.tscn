@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://d3t77o8j3gq8g"]
 
 [ext_resource type="Script" uid="uid://doecswkm1k1ia" path="res://scripts/attached/resourceList.gd" id="1_5p55f"]
+[ext_resource type="Script" uid="uid://ehkvfjc1w0yl" path="res://scripts/attached/scene_root.gd" id="1_lpubu"]
 [ext_resource type="Script" uid="uid://q1w1lq0mtr5i" path="res://scripts/attached/actionsListUI.gd" id="2_8n18e"]
 [ext_resource type="Script" uid="uid://dledolcqmwc8f" path="res://scripts/attached/log.gd" id="2_r67kn"]
 [ext_resource type="Theme" uid="uid://dpsnalb5vaule" path="res://themes/basic_theme.tres" id="3_brbbq"]
@@ -16,6 +17,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_62e2m")
+script = ExtResource("1_lpubu")
 
 [node name="horizontal_layout_box" type="HBoxContainer" parent="." unique_id=644992921]
 layout_mode = 1

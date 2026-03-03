@@ -11,5 +11,7 @@ base_increased = 1.0
 [resource]
 script = ExtResource("1_daioi")
 name = "Survive"
+tooltip = "Scavenge for Food; look for shelter and help.
+Food Production: +1 / Day"
 resource_modifiers = Array[ExtResource("1_js1xn")]([SubResource("Resource_js1xn")])
 metadata/_custom_type_script = "uid://c5xx4ibshfqox"

@@ -2,8 +2,8 @@
 extends Resource
 class_name GameAction
 
-@export var name = "blank"
-@export var tooltip = "blank"
+@export var name: String = "blank"
+@export_multiline var tooltip: String = "blank"
 @export var icon: Texture2D
 var unlocked = false
 var depreciated = false
@@ -16,4 +16,4 @@ var depreciated = false
 
 func update_dependant_resource_rates():
 	for modifier:ModifierEntry in resource_modifiers:
-		Inventory.resources[modifier.resource].update_rate()
+		Inventory.resources[modifier.resource].update_rate_and_ui()

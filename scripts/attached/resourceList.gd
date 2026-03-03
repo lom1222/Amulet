@@ -8,6 +8,7 @@ var resource_indexes = {}
 func _ready() -> void:
 	GlobalSignals.resource_unlocked.connect(_on_resource_unlocked)
 	GlobalSignals.resource_tooltip_changed.connect(_on_resource_tooltip_changed)
+	GlobalSignals.game_ready.connect(_on_game_ready)
 	_build_ui_list()
 	
 func _build_ui_list():
@@ -36,16 +37,21 @@ func _update_ui_values():
 		set_item_text(index, new_text)
 
 func _update_all_tooltip_values():
-	return
+	for resource:String in Inventory.resources.keys():
+		if resource_indexes.has(resource):
+			_update_tooltip_value(Inventory.resources[resource])
 	
 func _update_tooltip_value(resource: GameResource):
 	set_item_tooltip(resource_indexes[resource.name],resource.tooltip)
 
-func _on_resource_unlocked(_resource_name):
+func _on_resource_unlocked(_resource_name:String):
 	_build_ui_list()
 
 func _on_resource_tooltip_changed(resource: GameResource):
 	_update_tooltip_value(resource)
+	
+func _on_game_ready():
+	_update_all_tooltip_values()
 	
 func _make_custom_tooltip(for_text: String) -> Control:
 	var tooltip_panel = PanelContainer.new()
@@ -54,7 +60,8 @@ func _make_custom_tooltip(for_text: String) -> Control:
 	tooltip_label.bbcode_enabled = true
 	tooltip_label.text = for_text
 	tooltip_label.fit_content = true
-	tooltip_label.custom_minimum_size = Vector2(300, 0)
+	#tooltip_label.custom_minimum_size = Vector2(300, 0)
+	tooltip_label.autowrap_mode = TextServer.AUTOWRAP_OFF
 
 	tooltip_panel.add_child(tooltip_label)
 	return tooltip_panel
