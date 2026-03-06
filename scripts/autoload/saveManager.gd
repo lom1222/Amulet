@@ -21,9 +21,7 @@ func _save_game():
 	for resource_name:String in Inventory.resources.keys():
 		save_file.set_value("Resources", resource_name, Inventory.resources[resource_name].get_save_data())
 	
-	var playerSave: Dictionary[String, float] = PlayerData.getSave()
-	for data_value:String in playerSave:
-		save_file.set_value("Player", data_value, PlayerData.data[data_value])
+	save_file.set_value("Player", "Data", PlayerData.get_save_data())
 	
 	save_file.set_value("Meta", "save_time", Time.get_unix_time_from_system())
 	
@@ -40,8 +38,7 @@ func _load_game():
 		for resource_name in Inventory.resources:
 			Inventory.resources[resource_name].load_from_data(save_file.get_value("Resources", resource_name, Inventory.resources[resource_name].get_save_data()))
 		
-		for data_value in PlayerData.data:
-			PlayerData.data[data_value] = save_file.get_value("Player", data_value, PlayerData.data[data_value])
+		PlayerData.load_from_data(save_file.get_value("Player", "Data", PlayerData.get_save_data()))
 		
 		var cur_time = Time.get_unix_time_from_system()
 		var _time_since_last_save = cur_time - save_file.get_value("Meta", "save_time", cur_time)
