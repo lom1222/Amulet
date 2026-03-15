@@ -13,4 +13,4 @@ func validate_resource_names(modifiers: Array[ModifierEntry]) -> bool:
 	var names : Array[String] = []
 	for modifier: ModifierEntry in modifiers:
 		names.append(modifier.resource)
-	return names.all(func(resource:String): return Inventory.RESOURCE_LIST.has(resource))
+	return names.all(func(resource:String): return Inventory.resources.keys().has(resource))

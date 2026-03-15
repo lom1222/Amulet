@@ -1,17 +1,12 @@
-extends RefCounted
-class_name GameResource
+class_name GameResource extends Unlockable
 
-var name: String = "blank"
-var tooltip: String = "blank"
-var amount: float = 0.0
+var amount: float
 var rate: float = 0.0
 
-var unlocked: bool = false
-var rate_enabled: bool = false
-var depreciated: bool = false
+var rate_enabled: bool = true
 
-var is_limited_resource: bool = true
-var resource_pool: float = 0
+var is_limited_resource: bool
+var resource_pool: float
 
 var base_rate: float = 0
 var percent_increase: float = 100
@@ -36,9 +31,10 @@ func update_rate_and_ui():
 		return
 	_update_rate_variables()
 	rate = _get_new_rate()
+	if not unlocked:
+		return
 	tooltip = _generate_tooltip()
-	GlobalSignals.resource_tooltip_changed.emit(self)
-	
+	GlobalSignals.emit_resource_tooltip_changed(self)
 
 func _get_new_rate() -> float:
 	if not rate_enabled:
@@ -71,6 +67,8 @@ func _generate_tooltip() -> String:
 	var tooltip_lines: Array[String] = []
 	
 	tooltip_lines.append("[color=%s][b]%s:[/b][/color]" % ["white",name.capitalize()])
+	if not rate_enabled:
+		tooltip_lines.append("[color=%s][b]DISABLED[/b][/color]" % ["red"])
 	
 	if not base_rate_modifiers.is_empty():
 		tooltip_lines.append("[color=%s][b]   Production:[/b][/color]" % ["grey"])
@@ -166,3 +164,13 @@ func load_from_data(data):
 	resource_pool = data["resource_pool"]
 	total_created = data["total_created"]
 	update_rate_and_ui()
+	
+func _init(_name: String = "blank", _tooltip: String = "blank", _amount: float = 0.0, _is_limited_resource: bool = true, _resource_pool: float = 0, _unlock_condition: Callable = func() -> bool: return false, _on_unlock_function: Callable = func() -> bool: return false) -> void:
+	type = "resource"
+	name = _name
+	tooltip = _tooltip
+	amount = _amount
+	is_limited_resource = _is_limited_resource
+	resource_pool = _resource_pool
+	unlock_condition = _unlock_condition
+	on_unlock_function = _on_unlock_function

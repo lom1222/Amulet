@@ -9,19 +9,13 @@ func _ready() -> void:
 func _generate_buttons():
 	for child in get_children():
 		child.queue_free()
-		
-	var dir = DirAccess.open(action_data_folder)
-	if dir:
-		dir.list_dir_begin()
-		var file_name = dir.get_next()
-		
-		while file_name != "":
-			if file_name.ends_with(".tres"):
-				var game_action = load(action_data_folder + file_name) as GameAction
-				var has_valid_names = DataValidator.validate_resource_names(game_action.resource_modifiers)
-				LogManager.add_log("[%s] validation: [%s]" % [file_name, has_valid_names], "sys", "green" if has_valid_names else "red")
-				_create_button(game_action)
-			file_name = dir.get_next()
+	
+	var game_actions = ActionManager.game_actions
+	
+	for game_action: GameAction in game_actions:
+		var has_valid_names = DataValidator.validate_resource_names(game_action.resource_modifiers)
+		LogManager.add_log("[%s] validation: [%s]" % [game_action.name, has_valid_names], "sys", "green" if has_valid_names else "red")
+		_create_button(game_action)
 
 func _create_button(data):
 	var button = action_button_scene.instantiate()

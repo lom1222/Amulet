@@ -3,7 +3,8 @@ extends Node
 const CONFIG_FILE_PATH = "user//:config_0.cfg"
 
 var configs = {
-	"auto_save_frequency": 60.0,
+	"AUTO_SAVE_FREQUENCY": 60.0,
+	"UNLOCK_CHECK_FREQUENCY": 1.0,
 	"DISABLE_SAVING": false,
 	"DISABLE_LOADING": false,
 	"PRINT_CONFIGS_ON_STARTUP": true

@@ -18,7 +18,7 @@ func add_log(text: String, log_type: String = "lore", color: String = "white"):
 	if log_type == "sys":
 		time_stamp = Time.get_datetime_string_from_system(false, true)
 	else:
-		time_stamp = Time.get_time_string_from_unix_time(PlayerData.game_time)
+		time_stamp = Time.get_time_string_from_unix_time(floor(PlayerData.game_time))
 	new_log_entry = "[color=%s][%s][/color] %s" % [time_stamp_color, time_stamp, new_log_entry]
 	
 	log_history[log_type].append(new_log_entry)

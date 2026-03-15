@@ -3,15 +3,18 @@ extends Node
 const SAVE_FILE_PATH = "user://save_0.cfg"
 
 func _ready() -> void:
-	var auto_save_timer =  Timer.new()
-	add_child(auto_save_timer)
-	auto_save_timer.wait_time = ConfigManager.configs["auto_save_frequency"]
-	auto_save_timer.autostart = true
-	auto_save_timer.timeout.connect(_on_auto_save_timer_timeout)
-	auto_save_timer.start()
+	_create_auto_save_timer()
 	var game_loaded = _load_game()
 	if not game_loaded:
 		_initialize_game_data()
+		
+func _create_auto_save_timer():
+	var auto_save_timer =  Timer.new()
+	add_child(auto_save_timer)
+	auto_save_timer.wait_time = ConfigManager.configs["AUTO_SAVE_FREQUENCY"]
+	auto_save_timer.autostart = true
+	auto_save_timer.timeout.connect(_on_auto_save_timer_timeout)
+	auto_save_timer.start()
 
 func _save_game():
 	if ConfigManager.configs["DISABLE_SAVING"]:

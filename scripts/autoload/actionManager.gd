@@ -5,7 +5,10 @@ var active_actions: Array[GameAction] = []
 signal actions_list_changed
 signal action_toggled(action: GameAction)
 
+var game_actions: Array[GameAction] = []
+
 func _ready() -> void:
+	game_actions = ActionData.get_actions()
 	update_action_list()
 
 func toggle_action(action: GameAction) -> bool:
@@ -14,7 +17,7 @@ func toggle_action(action: GameAction) -> bool:
 		active_actions.erase(action)
 		toggle_state = false
 	else:
-		if active_actions.size() == PlayerData.data["max_simultaneous_actions"]:
+		if active_actions.size() == PlayerData.max_simultaneous_actions:
 			active_actions.remove_at(0)
 		active_actions.append(action)
 		toggle_state = true

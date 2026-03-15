@@ -23,6 +23,7 @@ Inventory="*uid://cr4uho35wnfpd"
 ActionManager="*uid://ciyo5ll1i1245"
 DataValidator="*uid://ckgnpicxe23wm"
 SaveManager="*uid://bnlwdj8jirc7f"
+UnlockListener="*uid://hp5hopbobkeq"
 GlobalSignals="*uid://dqyb48asrxuq5"
 
 [gui]

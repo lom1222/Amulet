@@ -44,7 +44,7 @@ func _update_all_tooltip_values():
 func _update_tooltip_value(resource: GameResource):
 	set_item_tooltip(resource_indexes[resource.name],resource.tooltip)
 
-func _on_resource_unlocked(_resource_name:String):
+func _on_resource_unlocked(_resource: GameResource):
 	_build_ui_list()
 
 func _on_resource_tooltip_changed(resource: GameResource):
