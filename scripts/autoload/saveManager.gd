@@ -24,6 +24,9 @@ func _save_game():
 	for resource_name:String in Inventory.resources.keys():
 		save_file.set_value("Resources", resource_name, Inventory.resources[resource_name].get_save_data())
 	
+	for action : GameAction in ActionManager.game_actions:
+		save_file.set_value("Actions", action.name, action.get_save_data())
+	
 	save_file.set_value("Player", "Data", PlayerData.get_save_data())
 	
 	save_file.set_value("Meta", "save_time", Time.get_unix_time_from_system())
@@ -40,6 +43,9 @@ func _load_game():
 	if err == OK:
 		for resource_name in Inventory.resources:
 			Inventory.resources[resource_name].load_from_data(save_file.get_value("Resources", resource_name, Inventory.resources[resource_name].get_save_data()))
+		
+		for action: GameAction in ActionManager.game_actions:
+			action.load_from_data(save_file.get_value("Actions", action.name, action.get_save_data()))
 		
 		PlayerData.load_from_data(save_file.get_value("Player", "Data", PlayerData.get_save_data()))
 		

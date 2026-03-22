@@ -25,6 +25,7 @@ func update(delta):
 		resource_delta = resource_pool
 	amount += resource_delta
 	total_created += resource_delta
+	resource_pool -= resource_delta
 		
 func update_rate_and_ui():
 	if depreciated:

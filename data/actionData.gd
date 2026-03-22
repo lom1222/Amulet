@@ -20,5 +20,13 @@ static func get_actions() -> Array[GameAction]:
 		func(): return, #on_unlock function
 	))
 	
+	actions.append(GameAction.new(
+		"Test", #name
+		"Test Test TEsssttt", #tooltip
+		[ModifierEntry.new("test", 0.0, 0.0, 1.0)], #resource modifiers
+		func() -> bool: return Inventory.resources["food"].amount > 1e5, #unlock condition
+		func(): return, #on_unlock function
+	))
+	
 	
 	return actions

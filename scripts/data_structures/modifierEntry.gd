@@ -13,3 +13,13 @@ func _init(_resource : String = "blank", _base_increased : float = 0.0, _percent
 	base_increased = _base_increased
 	percent_increased = _percent_increased
 	multiplier = _multiplier
+
+func _to_string() -> String:
+	return str({
+		"resource" : resource,
+		"base_increased" : base_increased,
+		"percent_increased" : percent_increased,
+		"multiplier" : multiplier,
+		"source" : source,
+		"source_type" : source_type
+	})

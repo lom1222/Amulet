@@ -7,7 +7,11 @@ func setup(data: GameAction):
 	text = data.name
 	icon = data.icon
 	tooltip_text = data.tooltip
+	
+func update_visuals():
+	visible = action_data.unlocked and not action_data.depreciated
+	modulate = Color.GREEN if action_data.is_active else Color.WHITE
 
 func _pressed() -> void:
-	var active = ActionManager.toggle_action(action_data)
-	modulate = Color.GREEN if active else Color.WHITE
+	ActionManager.toggle_action(action_data)
+	update_visuals()
